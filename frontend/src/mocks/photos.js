@@ -19,7 +19,7 @@ const photo1 = {
 const photo2 = {
   "id": "2",
   "location": {
-    "city": "Toronto",
+    "city": "Montreal",
     "country": "Canada"
   },
   "urls": {
@@ -37,7 +37,7 @@ const photo2 = {
 const photo3 = {
   "id": "3",
   "location": {
-    "city": "Ottawa",
+    "city": "Montreal",
     "country": "Canada"
   },
   "urls": {
@@ -55,7 +55,7 @@ const photo3 = {
 const photo4 = {
   "id": "4",
   "location": {
-    "city": "Quebec",
+    "city": "Montreal",
     "country": "Canada"
   },
   "urls": {
@@ -74,7 +74,7 @@ const photo4 = {
 const photo5 = {
   "id": "5",
   "location": {
-    "city": "Vancouver",
+    "city": "Montreal",
     "country": "Canada"
   },
   "urls": {
@@ -110,7 +110,7 @@ const photo6 =  {
 const photo7 = {
   "id": "7",
   "location": {
-    "city": "Calgary",
+    "city": "Montreal",
     "country": "Canada"
   },
   "urls": {
@@ -128,7 +128,7 @@ const photo7 = {
 const photo8 = {
   "id": "8",
   "location": {
-    "city": "Ottawa",
+    "city": "Montreal",
     "country": "Canada"
   },
   "urls": {
@@ -146,7 +146,7 @@ const photo8 = {
 const photo9 = {
   "id": "9",
   "location": {
-    "city": "Nova Scotia",
+    "city": "Montreal",
     "country": "Canada"
   },
   "urls": {
@@ -164,7 +164,7 @@ const photo9 = {
 const photo10 = {
   "id": "10",
   "location": {
-    "city": "Edmonton",
+    "city": "Montreal",
     "country": "Canada"
   },
   "urls": {
@@ -178,8 +178,6 @@ const photo10 = {
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
 }
-
-
 
 
 const mockPhotos = [
@@ -275,4 +273,4 @@ const mockPhotos = [
   }
 ]
 
-export default photos;
+export default mockPhotos;

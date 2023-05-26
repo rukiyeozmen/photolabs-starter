@@ -5,6 +5,8 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+  background-color: #F5F5F5;
+  border-top:solid 0.5px black;
 }
 
 .photo-list:after {
@@ -12,3 +14,4 @@
   flex: 0 1 30%;
   margin: 5px;
 }
+
