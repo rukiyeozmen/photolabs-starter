@@ -3,9 +3,9 @@ import '../styles/PhotoDetailsModal.scss';
 import PhotoList from '../components/PhotoList';
 
 const PhotoDetailsModal = ({ selectedPhoto, onClose, photos, favourites, toggleFavourites }) => {
-  const id = Number(selectedPhoto)-1;
-  const similarPhotos = Object.values(photos[id].similar_photos)
-
+  const id = Number(selectedPhoto);
+  const foundPhoto = photos.find(x => x.id === id)
+  const similarPhotos = foundPhoto?.similar_photos ? Object.values(foundPhoto.similar_photos) : []; 
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal--close-button" onClick={onClose}>
@@ -37,7 +37,7 @@ const PhotoDetailsModal = ({ selectedPhoto, onClose, photos, favourites, toggleF
           </defs>
         </svg>
       </button>
-      <img className='photo-details-modal--image' src={photos[id].urls.regular} alt={`Photo ${id}`} />
+      <img className='photo-details-modal--image' src={foundPhoto.urls.regular} alt={`Photo ${id}`} />
     
       <div className='photo-details-modal--header'>Similar Photos</div>
       <div className='photo-details-modal--images'>

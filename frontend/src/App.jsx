@@ -1,33 +1,47 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useApplicationData } from './hooks/useApplicationData';
 
 import './App.scss';
 import HomeRoute from './routes/HomeRoute';
-import mockPhotos from './mocks/photos.js';
-import topics from './mocks/topics.js';
+
 
 const App = () => {
-  // const [favourites, setFavourites] = useState([])
- 
+  const [photos, setPhotos] = useState([])
+  const [topics, setTopics] = useState([])
+
+  useEffect(()=>{
+    fetch('/api/photos')
+    .then((response)=>response.json())
+    .then(data => setPhotos(data))
+    .catch(error => console.log('Error photos: ', error))
+
+    fetch('/api/topics')
+    .then((response)=>response.json())
+    .then(data => setTopics(data))
+    .catch(error => console.log('Error topics: ', error))
+
+  }
+  ,[])
+
+  const fetchPhotosByTopic = (topicId) => {
+    console.log("TOPICID",topicId)
+    fetch(`/api/topics/photos/${topicId}`)
+      .then(response => response.json())
+      .then(data => setPhotos(data))
+      .catch(error => console.error(`Error fetching photos for topic ${topicId}:`, error));
+  };
+
 
   const {
     toggleFavourites,
-    state, setSelectedPhoto, setIsModalOpen, handlePhotoClick
+    state, setSelectedPhoto, onClose, handlePhotoClick
   } = useApplicationData();
-
-  // function toggleFavourites(id){
-  //   if(favourites.includes(id)){
-  //     console.log("---removing favourites: ", id)
-  //     setFavourites(favourites.filter(i => i != id));
-  //      return;
-  //   } 
-  //   console.log('---adding Favourites: ', id)
-  //   setFavourites([...favourites, id]);
-  //   } 
 
   return (
     <div className="App">
-      <HomeRoute photos = {mockPhotos} topics = {topics} favourites = {state.favourites} toggleFavourites={toggleFavourites} selectedPhoto={state.selectedPhoto} setSelectedPhoto={setSelectedPhoto} isModalOpen={state.isModalOpen} setIsModalOpen={setIsModalOpen} handlePhotoClick={handlePhotoClick}/>
+      <HomeRoute photos = {photos} topics = {topics} favourites = {state.favourites} toggleFavourites={toggleFavourites} selectedPhoto={state.selectedPhoto} setSelectedPhoto={setSelectedPhoto} isModalOpen={state.isModalOpen} setIsModalOpen={onClose} handlePhotoClick={handlePhotoClick}
+      fetchPhotosByTopic={fetchPhotosByTopic} 
+      />
     </div>
   );
 };

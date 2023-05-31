@@ -4,19 +4,6 @@ import PhotoListItem from './PhotoListItem';
 import PhotoDetailsModal from '../routes/PhotoDetailsModal';
 
 const PhotoList = ({ photos, favourites, toggleFavourites, selectedPhoto, isModalOpen, setIsModalOpen, handlePhotoClick, setSelectedPhoto}) => {
-  
-
-  // const handlePhotoClick = (photo) => {
-  //   setSelectedPhoto(photo);
-  //   setIsModalOpen(true);
-  //   // const photoDetails = {
-  //   //   photos,
-  //   //   favourites,
-  //   //   toggleFavourites
-  //   // }
-  //   // console.log(photoDetails)
-  // };
-
   return (
     <ul className="photo-list">
       {photos.map((photo) => (
